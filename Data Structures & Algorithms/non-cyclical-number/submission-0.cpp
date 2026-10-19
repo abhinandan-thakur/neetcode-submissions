@@ -1,0 +1,19 @@
+class Solution {
+public:
+    bool isHappy(int n) {
+        unordered_set<int> visited;
+        while(n != 1) {
+            if(visited.count(n)) return false;
+            visited.insert(n);
+            int dup = n;
+            int sum = 0;
+            while(dup != 0) {
+                int last = dup%10;
+                sum = sum + last*last;
+                dup = dup/10;
+            }
+            n = sum;
+        }
+        return true;
+    }
+};
